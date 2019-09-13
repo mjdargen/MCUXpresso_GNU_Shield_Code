@@ -1,0 +1,3 @@
+LCD_graphics.c:10:6:Graphics_Test	48	static
+LCD_graphics.c:137:6:LCD_Draw_Line	104	static
+LCD_graphics.c:445:6:LCD_Draw_Circle	56	static

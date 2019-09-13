@@ -1,0 +1,5 @@
+touchscreen.c:27:6:Init_ADC	0	static
+touchscreen.c:36:6:LCD_TS_Init	8	static
+touchscreen.c:46:10:LCD_TS_Read	32	static
+touchscreen.c:158:6:LCD_TS_Blocking_Read	24	static
+touchscreen.c:226:6:LCD_TS_Calibrate	40	static

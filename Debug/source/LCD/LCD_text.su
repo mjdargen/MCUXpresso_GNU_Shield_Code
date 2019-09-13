@@ -1,0 +1,9 @@
+LCD_text.c:25:9:Bit_Reverse_Byte	16	static
+LCD_text.c:41:6:LCD_Text_Set_Colors	8	static
+LCD_text.c:50:6:LCD_Erase	8	static
+LCD_text.c:54:6:LCD_Text_Init	8	static
+LCD_text.c:90:9:LCD_Text_GetGlyphWidth	16	static
+LCD_text.c:96:6:LCD_Text_PrintChar	56	static
+LCD_text.c:221:6:LCD_Text_PrintStr	16	static
+LCD_text.c:236:6:LCD_Text_PrintStr_RC	24	static
+LCD_text.c:256:7:LCD_Text_Test	24	static

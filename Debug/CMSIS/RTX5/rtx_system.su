@@ -1,0 +1,13 @@
+rtx_core_cm.h:186:22:SetPendSV	0	static
+rtx_lib.h:95:30:osRtxObject	8	static
+rtx_lib.h:101:30:osRtxThreadObject	8	static
+rtx_lib.h:111:35:osRtxEventFlagsObject	8	static
+rtx_lib.h:121:33:osRtxSemaphoreObject	8	static
+rtx_lib.h:126:35:osRtxMemoryPoolObject	8	static
+rtx_lib.h:136:31:osRtxMessageObject	8	static
+rtx_lib.h:161:25:osRtxKernelGetState	0	static
+rtx_system.c:34:17:isr_queue_put	24	static
+rtx_system.c:77:21:isr_queue_get	16	static
+rtx_system.c:119:6:osRtxTick_Handler	16	static
+rtx_system.c:167:6:osRtxPendSV_Handler	16	static
+rtx_system.c:202:6:osRtxPostProcess	16	static
