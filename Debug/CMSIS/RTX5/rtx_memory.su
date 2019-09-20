@@ -1,5 +1,0 @@
-rtx_memory.c:46:27:MemHeadPtr	8	static
-rtx_memory.c:52:28:MemBlockPtr	16	static
-rtx_memory.c:70:32:osRtxMemoryInit	24	static
-rtx_memory.c:105:29:osRtxMemoryAlloc	48	static
-rtx_memory.c:174:32:osRtxMemoryFree	32	static

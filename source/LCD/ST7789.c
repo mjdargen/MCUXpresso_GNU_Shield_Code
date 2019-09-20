@@ -68,7 +68,7 @@ void LCD_GPIO_Init(void) {
 	unsigned i;
 	
 	// Enable clock to ports
-	SIM->SCGC5 |= SIM_SCGC5_PORTC_MASK | SIM_SCGC5_PORTE_MASK;
+	SIM->SCGC5 |= SIM_SCGC5_PORTA_MASK | SIM_SCGC5_PORTC_MASK | SIM_SCGC5_PORTE_MASK;
 	
 	// Make digital pins GPIO
 	// Data bus pins
@@ -106,7 +106,7 @@ void LCD_GPIO_Init(void) {
 
 /* Initialize hardware for LCD backlight control and set to default value. */
 static void LCD_Init_Backlight(void) {
-	PWM_Init(LCD_BL_TPM, LCD_BL_TPM_CHANNEL, LCD_BL_PERIOD, LCD_BL_PERIOD/3);	
+	PWM_Init(LCD_BL_TPM, LCD_BL_TPM_CHANNEL, LCD_BL_PERIOD, LCD_BL_PERIOD/3);
 	//set multiplexer to connect TPM1 Ch 0 to PTA12
 	PORTA->PCR[12] &= PORT_PCR_MUX_MASK; 
 	PORTA->PCR[12] |= PORT_PCR_MUX(3); 

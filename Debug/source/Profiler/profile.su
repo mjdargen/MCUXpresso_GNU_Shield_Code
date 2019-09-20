@@ -1,5 +1,0 @@
-profile.c:11:6:Init_Profiling	16	static
-profile.c:24:6:Disable_Profiling	0	static
-profile.c:28:6:Enable_Profiling	0	static
-profile.c:32:6:Sort_Profile_Regions	16	static
-profile.c:51:6:Print_Sorted_Profile	0	static

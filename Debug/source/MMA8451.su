@@ -1,6 +1,0 @@
-MMA8451.c:25:5:init_mma	8	static
-MMA8451.c:50:6:read_full_xyz	24	static
-MMA8451.c:72:6:read_xyz	8	static
-MMA8451.c:83:7:approx_sqrtf	16	static
-MMA8451.c:95:7:approx_atan2f	56	static
-MMA8451.c:136:6:convert_xyz_to_roll_pitch	8	static

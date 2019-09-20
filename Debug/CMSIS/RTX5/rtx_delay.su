@@ -1,6 +1,0 @@
-rtx_core_cm.h:116:24:IsIrqMode	8	static
-rtx_core_cm.h:122:24:IsIrqMasked	8	static
-rtx_delay.c:33:19:svcRtxDelay	16	static
-rtx_delay.c:48:19:svcRtxDelayUntil	16	static
-rtx_delay.c:76:12:osDelay	24	static
-rtx_delay.c:90:12:osDelayUntil	24	static

@@ -9,8 +9,8 @@
 
 #define BUSY_ACK 	    while(I2C0->S & 0x01)
 #define TRANS_COMP		while(!(I2C0->S & 0x80))
-// #define I2C_WAIT			while((I2C0->S & I2C_S_IICIF_MASK)==0) {} \
-                                 I2C0->S |= I2C_S_IICIF_MASK;
+// #define I2C_WAIT			while((I2C0->S & I2C_S_IICIF_MASK)==0) {}
+//                                 I2C0->S |= I2C_S_IICIF_MASK;
 #define I2C_WAIT 			i2c_wait();
 
 #define NACK 	        I2C0->C1 |= I2C_C1_TXAK_MASK
