@@ -92,13 +92,8 @@ void read_xyz(void)
 //	return *(float*)&val_int; /* Interpret again as float */
 //}
 
-
-// new implementation of approx_sqrtf requires union
-union float_int{
-	float f;
-	int i;
-};
-
+/* mjdargen */
+// new implementation of approx_sqrtf uses union
 float approx_sqrtf(float z) { // from Wikipedia
 	union float_int val_int;
 	const int a = 0x4c000;
@@ -108,7 +103,7 @@ float approx_sqrtf(float z) { // from Wikipedia
 	val_int.i >>= 1; /* Divide by 2. */
 	val_int.i += 1 << 29; /* Add ((b + 1) / 2) * 2^m. */
 	val_int.i += a;
-	//	val_int = (1 << 29) + (val_int >> 1) - (1 << 22) + a;
+	// val_int.i = (1 << 29) + (val_int.i >> 1) - (1 << 22) + a;
 	return val_int.f; /* Interpret again as float */
 }
 

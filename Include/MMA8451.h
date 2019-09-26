@@ -20,6 +20,13 @@
 #define COUNTS_PER_G (16384.0)
 #define M_PI (3.14159265)
 
+/* mjdargen */
+// new implementation of approx_sqrtf requires union
+union float_int{
+	float f;
+	int i;
+};
+
 int init_mma(void);
 void read_full_xyz(void);
 void read_xyz(void);
