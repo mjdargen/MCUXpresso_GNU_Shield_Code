@@ -80,16 +80,36 @@ void read_xyz(void)
 	acc_Z = ((int16_t) ((int8_t) i2c_read_byte(MMA_ADDR, REG_ZHI))) << 8;
 }
 
+//float approx_sqrtf(float z) { // from Wikipedia
+//	int val_int = *(int*)&z; /* Same bits, but as an int */
+//	const int a = 0x4c000;
+//
+//  val_int -= 1 << 23; /* Subtract 2^m. */
+//  val_int >>= 1; /* Divide by 2. */
+//  val_int += 1 << 29; /* Add ((b + 1) / 2) * 2^m. */
+//	val_int += a;
+//	//	val_int = (1 << 29) + (val_int >> 1) - (1 << 22) + a;
+//	return *(float*)&val_int; /* Interpret again as float */
+//}
+
+
+// new implementation of approx_sqrtf requires union
+union float_int{
+	float f;
+	int i;
+};
+
 float approx_sqrtf(float z) { // from Wikipedia
-	int val_int = *(int*)&z; /* Same bits, but as an int */
+	union float_int val_int;
 	const int a = 0x4c000;
 
-  val_int -= 1 << 23; /* Subtract 2^m. */
-  val_int >>= 1; /* Divide by 2. */
-  val_int += 1 << 29; /* Add ((b + 1) / 2) * 2^m. */
-	val_int += a;
+	val_int.f = z; /* interpret float as int */
+	val_int.i -= 1 << 23; /* Subtract 2^m. */
+	val_int.i >>= 1; /* Divide by 2. */
+	val_int.i += 1 << 29; /* Add ((b + 1) / 2) * 2^m. */
+	val_int.i += a;
 	//	val_int = (1 << 29) + (val_int >> 1) - (1 << 22) + a;
-	return *(float*)&val_int; /* Interpret again as float */
+	return val_int.f; /* Interpret again as float */
 }
 
 float approx_atan2f(float y, float x) {
