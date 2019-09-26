@@ -14,6 +14,9 @@ typedef struct {
 	uint8_t R, G, B; // note: using 5-6-5 color mode for LCD. 
 									 // Values are left aligned here
 } COLOR_T;
+
+/* mjdargen */
+extern COLOR_T black, white;
 	
 /*** ***/
 

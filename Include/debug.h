@@ -25,4 +25,9 @@
 
 void Init_Debug_Signals(void);
 
+/* mjdargen */
+#define DEBUG_START(channel) { PTB->PSOR = MASK(channel); }
+#define DEBUG_STOP(channel) { PTB->PCOR = MASK(channel); }
+#define DEBUG_TOGGLE(channel) { PTB->PTOR = MASK(channel); }
+
 #endif // DEBUG_H

@@ -181,28 +181,28 @@ void Play_Waveform_with_DMA(void) {
 	Start_DMA_Playback();
 }
 
- void Thread_Sound_Manager(void * arg) {
+void Thread_Sound_Manager(void * arg) {
 	uint16_t lfsr=1234;
 	uint16_t bit;
-	
+
 	while (1) {
 #if 1
 		// make a new random sound periodically
 		osDelay(200);
 		PTB->PSOR = MASK(DBG_TSNDMGR_POS);
-		Voice[0].Volume = 0xAFFF; 
+		Voice[0].Volume = 0xAFFF;
 		Voice[0].Duration = 6000;
 		bit  = ((lfsr >> 0) ^ (lfsr >> 2) ^ (lfsr >> 3) ^ (lfsr >> 5) ) & 1;
 		lfsr =  (lfsr >> 1) | (bit << 15);
 #if 1
-		Voice[0].Period = FREQ_TO_PERIOD((lfsr & 0x03FF) + 40); 
+		Voice[0].Period = FREQ_TO_PERIOD((lfsr & 0x03FF) + 40);
 		Voice[0].Decay = 30;
 #else // fixed frequency
-		Voice[0].Period = FREQ_TO_PERIOD(1000); 
+		Voice[0].Period = FREQ_TO_PERIOD(1000);
 		Voice[0].Decay = 90;
 #endif
-		Voice[0].Counter = 0; 
-		Voice[0].CounterIncrement = (NUM_STEPS*256)/Voice[0].Period; 
+		Voice[0].Counter = 0;
+		Voice[0].CounterIncrement = (NUM_STEPS*256)/Voice[0].Period;
 		Voice[0].Type = VW_SINE;
 		PTB->PCOR = MASK(DBG_TSNDMGR_POS);
 #else
@@ -211,12 +211,13 @@ void Play_Waveform_with_DMA(void) {
 		// Add code to initialize voices
 #endif
 
-		osThreadFlagsSet(t_Refill_Sound_Buffer, EV_REFILL_SOUND_BUFFER);	
+		osThreadFlagsSet(t_Refill_Sound_Buffer, EV_REFILL_SOUND_BUFFER);
 		Play_Waveform_with_DMA();
 	}
 }
 
- void Thread_Refill_Sound_Buffer(void * arg) {
+
+void Thread_Refill_Sound_Buffer(void * arg) {
 	uint32_t i;
 	uint16_t v;
 	int32_t sum, sample;

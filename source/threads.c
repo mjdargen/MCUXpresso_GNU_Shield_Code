@@ -140,7 +140,9 @@ void Thread_Read_TS(void * arg) {
 #if USE_LCD_MUTEX
 		osMutexAcquire(LCD_mutex, osWaitForever);
 #endif
-		LCD_Text_PrintStr_RC(1, 0, buffer);
+		/* mjdargen */
+		LCD_Text_PrintStr_RC(0, 0, buffer);
+		//LCD_Text_PrintStr_RC(1, 0, buffer);
 #if USE_LCD_MUTEX
 		osMutexRelease(LCD_mutex);
 #endif
@@ -149,7 +151,9 @@ void Thread_Read_TS(void * arg) {
 #if USE_LCD_MUTEX
 		osMutexAcquire(LCD_mutex, osWaitForever);
 #endif
-		LCD_Text_PrintStr_RC(2, 0, buffer);
+		/* mjdargen */
+		LCD_Text_PrintStr_RC(1, 0, buffer);
+		//LCD_Text_PrintStr_RC(2, 0, buffer);
 #if USE_LCD_MUTEX
 		osMutexRelease(LCD_mutex);
 #endif
@@ -166,11 +170,50 @@ void Thread_Read_TS(void * arg) {
 	paddle_color.G = 10;
 	paddle_color.B = 100;
 
-	black.R = 0;
+	/* mjdargen */
+	/*black.R = 0;
 	black.G = 0;
-	black.B = 0;
+	black.B = 0;*/
 	
+	/* mjdargen */
 	while (1) {
+		DEBUG_START(DBG_TUPDATESCR_POS);
+
+		if ((roll < -2.0) || (roll > 2.0)) {
+			p1.X = paddle_pos;
+			p1.Y = PADDLE_Y_POS;
+			p2.X = p1.X + PADDLE_WIDTH;
+			p2.Y = p1.Y + PADDLE_HEIGHT;
+			osMutexAcquire(LCD_mutex, osWaitForever);
+			LCD_Fill_Rectangle(&p1, &p2, &black);
+			osMutexRelease(LCD_mutex);
+
+			paddle_pos += roll;
+			paddle_pos = MAX(0, paddle_pos);
+			paddle_pos = MIN(paddle_pos, LCD_WIDTH-1-PADDLE_WIDTH);
+
+			p1.X = paddle_pos;
+			p1.Y = PADDLE_Y_POS;
+			p2.X = p1.X + PADDLE_WIDTH;
+			p2.Y = p1.Y + PADDLE_HEIGHT;
+			paddle_color.R = 150+5*roll;
+			paddle_color.G = 150-5*roll;
+			osMutexAcquire(LCD_mutex, osWaitForever);
+			LCD_Fill_Rectangle(&p1, &p2, &white);
+			p1.X++;
+			p2.X--;
+			p1.Y++;
+			p2.Y--;
+			LCD_Fill_Rectangle(&p1, &p2, &paddle_color);
+			osMutexRelease(LCD_mutex);
+		}
+
+		DEBUG_STOP(DBG_TUPDATESCR_POS);
+		osDelay(THREAD_UPDATE_SCREEN_PERIOD_MS);
+	}
+
+	/* mjdargen */
+	/*while (1) {
 		osDelay(THREAD_UPDATE_SCREEN_PERIOD_MS);
 		PTB->PSOR = MASK(DBG_TUPDATESCR_POS);
 		
@@ -206,5 +249,5 @@ void Thread_Read_TS(void * arg) {
 #endif
 		}
 		PTB->PCOR = MASK(DBG_TUPDATESCR_POS);
-	}
+	}*/
 }

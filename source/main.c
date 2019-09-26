@@ -43,9 +43,6 @@ void HBLED_Test(void) {
  *----------------------------------------------------------------------------*/
 int main (void) {
 
-	SystemInit();
-	SystemCoreClockUpdate();
-
 	Init_Debug_Signals();
 	Init_RGB_LEDs();
 	Control_RGB_LEDs(0,0,1);			

@@ -7,6 +7,9 @@
 #define DRAW_RUNS_AS_LINES (0)
 #define STEP 8
 
+/* mjdargen */
+COLOR_T black={0,0,0}, white={255,255,255};
+
 void Graphics_Test(void) {
 	int x, y, r;
 	PT_T p1, p2;
