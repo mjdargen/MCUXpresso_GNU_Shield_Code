@@ -6,6 +6,10 @@ ECE560/561 KL25Z shield code ported to GNU for MCUXpresso IDE
     * Include nothing  
     * Newlibnano(none)  
     * enable printf/scanf float  
+*	Need to update board source files, import from Keil projects  
+    * MKL25Z4.h 
+    * system_MKL25Z4.c  
+    * system_MKL25Z4.h  
 *	Changed pragmas in I2C.c  
     * #pragma noline -->  __attribute__ ((noinline))  
 * Properties->C/C++ Build ->Settings ->MCU Linker -> Managed Linker Script  
