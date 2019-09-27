@@ -175,8 +175,8 @@ void Thread_Read_TS(void * arg) {
 	black.G = 0;
 	black.B = 0;*/
 	
-	/* mjdargen */
-	while (1) {
+	/* mjdargen - to add */
+	/*while (1) {
 		DEBUG_START(DBG_TUPDATESCR_POS);
 
 		if ((roll < -2.0) || (roll > 2.0)) {
@@ -210,10 +210,10 @@ void Thread_Read_TS(void * arg) {
 
 		DEBUG_STOP(DBG_TUPDATESCR_POS);
 		osDelay(THREAD_UPDATE_SCREEN_PERIOD_MS);
-	}
+	}*/
 
 	/* mjdargen */
-	/*while (1) {
+	while (1) {
 		osDelay(THREAD_UPDATE_SCREEN_PERIOD_MS);
 		PTB->PSOR = MASK(DBG_TUPDATESCR_POS);
 		
@@ -249,5 +249,5 @@ void Thread_Read_TS(void * arg) {
 #endif
 		}
 		PTB->PCOR = MASK(DBG_TUPDATESCR_POS);
-	}*/
+	}
 }
